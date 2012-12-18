@@ -661,6 +661,9 @@ function params(name) {
   
   success: function(data) {
   $('#polkaloader').hide();
+ 
+	var html = Mustache.to_html($('#product_template').html(), data.location);
+	$('#product_template').html(html);
 
   var html = Mustache.to_html(data.form, 
    {
@@ -680,6 +683,8 @@ function params(name) {
       message: data.location.id,
       }
   );
+  
+  
   
   var lazy_template = "<h1>{{location_name}}</h1> {{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
   

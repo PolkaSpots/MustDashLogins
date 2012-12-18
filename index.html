@@ -8,9 +8,24 @@
 
 <title>Untitled</title>
 </head>
-<body>
-  
 
+<body>
+<script type="text/javascript" src="http://buildinternet.com/project/supersized/slideshow/3.2/js/supersized.3.2.6.min.js"></script>
+
+<script type='text/javascript'>			
+  			jQuery(function($){				
+  				$.supersized({
+  					slides  :  	[ {image : "https://s3.amazonaws.com/ps-wifi/images/14/original/Timberyard_Landing_page.jpg?1355246342"} ]
+  				});
+  		    });
+</script> 
+
+<script type="text/html" id="product_template">
+  <div class="product">
+    {{ location_name }}
+  </div>
+</script>
+  
 <div id="polkaform"></div>
 
 <div id="test"></div>
