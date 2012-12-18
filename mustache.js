@@ -652,13 +652,16 @@ function params(name) {
   dataType: 'jsonp',
   
  beforeSend: function() {
+	
     $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' );
+    $('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />' );
   },
   
   success: function(data) {
   $('#polkaloader').hide();
+
   var html = Mustache.to_html(data.form, 
    {
       challenge: params('challenge'),
@@ -674,7 +677,7 @@ function params(name) {
       newsletter: data.newsletter,
       success_url: data.location.success_url,
       request_uri: data.request,
-      message: data.location.id
+      message: data.location.id,
       }
   );
   
@@ -740,6 +743,18 @@ function params(name) {
       }
   );
 
+  var ps_template = Mustache.to_html("{{ login_template }}", 
+   {
+      login_template: data.location.login_design,
+      }
+  );
+
+  var ps_custom_css = Mustache.to_html("{{ custom_css }}", 
+   {
+      custom_css: data.location.custom_css,
+      }
+  );
+
 //signature = $.md5(data.location.uampass);
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
@@ -752,6 +767,8 @@ $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'
 $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ ps_image +'" alt="">');
 $('.location_logo').html('<img src="'+ ps_logo +'" alt="">');
 $('.lazy').html(ps_lazy);
+$('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<style>' + ps_custom_css +'</style>' );
 
 $(1 == 1) ? polkaSMS(loc) : '';
 
