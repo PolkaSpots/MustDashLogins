@@ -656,7 +656,12 @@ function params(name) {
     $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' );
+<<<<<<< HEAD
     $('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />' );
+=======
+    $('head').append( '<link href="/assets/asdfasdf.css?body=1" media="screen" rel="stylesheet" type="text/css" />' );
+
+>>>>>>> 8f5507c4906a28f31e1ded5aa73a09f6a45c65ad
   },
   
   success: function(data) {
