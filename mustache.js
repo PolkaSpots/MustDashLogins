@@ -624,15 +624,11 @@ var Mustache;
 
 }())));
 
-function params(name) {
-    return decodeURI(
-        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
-    );
-}
 
 /*
- * PolkaSpots Magic Form Code
+ * PolkaSpots Magic Form Code Version 0.1
  * Use it but don't fuck with it, steal it or claim it's yours
+ * If you like it, put our name on it.
  *
  * Copyright 2012, PolkaSpots Limited
  * http://polkaspots.com
@@ -641,12 +637,18 @@ function params(name) {
  * http://creativecommons.org/licenses/MIT/
  * 
  */
+function params(name) {
+  return decodeURI(
+    (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+  );
+}
 
  function polkaSpots(auth,loc) {
+ $location = loc
  $.ajax({
   url: 'http://localhost:8080/api/v1/logins.json',
   type: 'application/x-javascript',
-  data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname},
+  data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
   dataType: 'jsonp',
   
  beforeSend: function() {
@@ -671,10 +673,10 @@ function params(name) {
       password: data.password,
       newsletter: data.newsletter,
       success_url: data.location.success_url,
-      request_uri: data.request
+      request_uri: data.request,
+      message: data.location.id
       }
   );
- 
   
   var lazy_template = "<h1>{{location_name}}</h1> {{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
   
@@ -688,8 +690,6 @@ function params(name) {
       location_website: data.location.location_website,
       }
   );
-
- 
  
  var ps_name = Mustache.to_html("{{location_name}}", 
    {
@@ -740,7 +740,6 @@ function params(name) {
       }
   );
 
-
 //signature = $.md5(data.location.uampass);
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
@@ -754,6 +753,7 @@ $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_i
 $('.location_logo').html('<img src="'+ ps_logo +'" alt="">');
 $('.lazy').html(ps_lazy);
 
+$(1 == 1) ? polkaSMS(loc) : '';
 
 },
   error: function() {
@@ -762,3 +762,37 @@ $('.lazy').html(ps_lazy);
 });
 }
 
+// SMS Auth //
+function polkaSMS(loc) {
+	var $form = $('#myForm');
+	$form.live('submit', function() {
+	 $('#sms_form').hide();
+	 $('#polkaloader').fadeIn();
+	 $.ajax({
+	 dataType: 'jsonp',
+	 // url: $form.attr( 'action' ),
+	 url: 'http://localhost:8080/api/v1/automatik.json',
+   data: $form.serialize() + '&request_uri=' + document.location.hostname + '&location_id=' + loc + '&mac=' + params('mac'),
+
+	 success: function(data) {
+		$('#polkaloader').hide();
+	  var new_data = Mustache.to_html(data.form, 
+	   {
+	      challenge: params('challenge'),
+	      uamip: params('uamip'),
+	      uamport: params('uamport'),
+	      called: params('called'),
+	      mac: params('mac'),
+	      sessionid: params('sessionid'),
+	      ip: params('ip'),
+	      username: data.username,
+	      newsletter: data.newsletter,
+	      success_url: data.location.success_url,
+	      }
+	  );
+		$('#test').hide().html(new_data).fadeIn();
+	}
+	});
+	return false;
+	});
+};
