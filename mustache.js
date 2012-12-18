@@ -655,6 +655,8 @@ function params(name) {
     $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' );
+    $('head').append( '<link href="/assets/asdfasdf.css?body=1" media="screen" rel="stylesheet" type="text/css" />' );
+
   },
   
   success: function(data) {
