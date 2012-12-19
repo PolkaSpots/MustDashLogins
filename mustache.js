@@ -783,6 +783,27 @@ $(1 == 1) ? polkaSMS(loc) : '';
 }
 
 // SMS Auth //
+function polkaLogin() {
+	var $form = $('#login_form');
+	$form.live('submit', function() {
+	 $('#login_form').hide();
+	 $('#polkaloader').fadeIn();
+	 $.ajax({
+	 dataType: 'jsonp',
+	 url: $form.attr( 'action' ),
+	 //url: 'http://localhost:8080/api/v1/automatik.json',
+   data: $form.serialize(),
+
+	 success: function(data) {
+		$('#polkaloader').hide();
+		alert("alsdkjfalskjdf");
+		$('#test').hide().html(new_data).fadeIn();
+	}
+	});
+	return false;
+	});
+};
+// SMS Auth //
 function polkaSMS(loc) {
 	var $form = $('#myForm');
 	$form.live('submit', function() {
