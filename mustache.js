@@ -662,8 +662,6 @@ function params(name) {
   success: function(data) {
   $('#polkaloader').hide();
  
-	//var html = Mustache.to_html($('#product_template').html(), data.location);
-	//$('#product_template').html(html);
 
   var html = Mustache.to_html(data.form, 
    {
