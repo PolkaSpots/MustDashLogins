@@ -774,7 +774,7 @@ $('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-
 $('head').append( '<style>' + ps_custom_css +'</style>' );
 
 $(1 == 1) ? polkaSMS(loc) : '';
-
+$(1 == 1) ? polkaLogin() : '';
 },
   error: function() {
     alert('Uh oh!');
