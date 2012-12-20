@@ -656,12 +656,8 @@ function params(name) {
     $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' );
-   
-
-
-
-
-    $('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />' );
+ 
+    //$('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />' );
   },
   
   success: function(data) {
@@ -779,7 +775,7 @@ $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_i
 $('.location_logo').html('<img src="'+ ps_logo +'" alt="">');
 $('.lazy').html(ps_lazy);
 //$('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>' + ps_custom_css +'</style>' );
 
 // General Stuff //
