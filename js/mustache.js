@@ -774,8 +774,8 @@ $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'
 $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ ps_image +'" alt="">');
 $('.location_logo').html('<img src="'+ ps_logo +'" alt="">');
 $('.lazy').html(ps_lazy);
-//$('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+//$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>' + ps_custom_css +'</style>' );
 
 // General Stuff //
