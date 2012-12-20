@@ -12,38 +12,33 @@
 <body>
 <script type="text/javascript" src="http://buildinternet.com/project/supersized/slideshow/3.2/js/supersized.3.2.6.min.js"></script>
 
-<script type='text/javascript'>			
-  			jQuery(function($){				
-  				$.supersized({
-  					slides  :  	[ {image : "https://s3.amazonaws.com/ps-wifi/images/14/original/Timberyard_Landing_page.jpg?1355246342"} ]
-  				});
-  		    });
-</script> 
 
-<script type="text/html" id="product_template">
-  <div class="product">
-    {{ location_name }}
-  </div>
-</script>
-  
-<div id="polkaform"></div>
+<form name="form1" method="POST" action="/?" id="login_form">
+    <input TYPE="hidden="" value="null">
+    <input type="HIDDEN" name="uamip" value="null">
+    <input type="HIDDEN" name="uamport" value="null">
+    
+    <input type="HIDDEN" name="userurl" value="http://">
+      <p>
+        <label for="id_email">Email</label>
+        <input type="text" name="email_newsletter">
+      </p>
+    <input type="hidden" name="UserName" placeholder="Username" value="9a865e37870d06587943d71200e2243e0a5452bc">
+    <p>
+       <label for="id_password">Enter The Password</label>
+       <input type="password" name="Password">
+    </p>
+   <p><input type="checkbox" name="newsletter">Sign-up for a newsletter</p>
+    <p class="fancyloginbutton">
+      <input type="submit" name="login" value="Login" class="btn btn-large">
+    </p>
+</form>
 
-<div id="test"></div>
-<div id="polkaloader"></div>
-<div id="polkacontent"></div>
 
-<h1 class="location_name"></h1>
-<span class="location_header"></span>
-<span class="location_info"></span>
-<span class="location_info_two"></span>
-<span class="location_address"></span>
-<span class="location_website"></span>
-<span class="location_logo"></span>
-<span class="location_image"></span>
-<hr>
-<div class="lazy"></div>
+<div class="break"></div>
 <script src="mustache.js"></script>
 <script type="text/javascript">polkaSpots('61410385','25478543')</script>
+
 </body>
 </html>
 

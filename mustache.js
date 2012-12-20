@@ -646,7 +646,7 @@ function params(name) {
  function polkaSpots(auth,loc) {
  $location = loc
  $.ajax({
-  url: 'http://localhost:8080/api/v1/logins.json',
+  url: 'http://my-wifi.co:8080/api/v1/locations/logins.json',
   type: 'application/x-javascript',
   data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
   dataType: 'jsonp',
@@ -656,6 +656,11 @@ function params(name) {
     $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' );
+   
+
+
+
+
     $('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />' );
   },
   
@@ -672,7 +677,7 @@ function params(name) {
       mac: params('mac'),
       sessionid: params('sessionid'),
       ip: params('ip'),
-      pathname: window.location.pathname,
+      pathname: '/login?',
       username: data.username,
       password: data.password,
       newsletter: data.newsletter,
@@ -758,9 +763,12 @@ function params(name) {
       }
   );
 
+
+
 //signature = $.md5(data.location.uampass);
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
+$('.polkaspots_logo').html('<img src="http://blackhawk.polkaspots.com/global/images/polkaspots-small.png'" alt="">');
 $('.location_name').html(ps_name);
 $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
@@ -774,6 +782,8 @@ $('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-
 $('head').append( '<style>' + ps_custom_css +'</style>' );
 
 $(1 == 1) ? polkaSMS(loc) : '';
+$(1 == 1) ? polkaLogin(loc) : '';
+
 },
   error: function() {
     alert('Uh oh!');
@@ -784,20 +794,23 @@ $(1 == 1) ? polkaSMS(loc) : '';
 
 // SMS Auth //
 function polkaLogin() {
-	var $form = $('#login_form');
+	var $form = $('#login_form___');
 	$form.live('submit', function() {
 	 $('#login_form').hide();
 	 $('#polkaloader').fadeIn();
 	 $.ajax({
-	 dataType: 'jsonp',
+	 type: 'GET',
 	 url: $form.attr( 'action' ),
 	 //url: 'http://localhost:8080/api/v1/automatik.json',
    data: $form.serialize(),
 
 	 success: function(data) {
 		$('#polkaloader').hide();
+		//$('head').append('<meta http-equiv="refresh" content="0;URL="http://192.168.8.1:3990/?username=9a865e37870d06587943d71200e2243e0a5452bc&	response=123456"">' );
+		
 		alert("alsdkjfalskjdf");
 		$('#test').hide().html(new_data).fadeIn();
+		
 	},
  	error: function(data) {
 	
@@ -816,7 +829,7 @@ function polkaSMS(loc) {
 	 $.ajax({
 	 dataType: 'jsonp',
 	 // url: $form.attr( 'action' ),
-	 url: 'http://localhost:8080/api/v1/automatik.json',
+	 url: 'http://my-wifi.co:8080/api/v1/locations/automatik.json',
    data: $form.serialize() + '&request_uri=' + document.location.hostname + '&location_id=' + loc + '&mac=' + params('mac'),
 
 	 success: function(data) {
