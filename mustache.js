@@ -768,7 +768,7 @@ function params(name) {
 //signature = $.md5(data.location.uampass);
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
-$('.polkaspots_logo').html('<img src="http://blackhawk.polkaspots.com/global/images/polkaspots-small.png'" alt="">');
+$('.polkaspots_logo').html('<img src="http://blackhawk.polkaspots.com/global/images/polkaspots-small.png" alt="">');
 $('.location_name').html(ps_name);
 $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
