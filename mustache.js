@@ -781,6 +781,10 @@ $('.lazy').html(ps_lazy);
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>' + ps_custom_css +'</style>' );
 
+// General Stuff //
+
+$('<p>Test</p>').insertAfter('#container');
+
 $(1 == 1) ? polkaSMS(loc) : '';
 $(1 == 1) ? polkaLogin(loc) : '';
 
