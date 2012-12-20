@@ -783,7 +783,7 @@ $('head').append( '<style>' + ps_custom_css +'</style>' );
 
 // General Stuff //
 
-$('<p>Test</p>').insertAfter('#container');
+$('<div id="footer-left">Copyright &#169; 2012 PolkaSpots Limited.</div>').insertAfter('#container');
 
 $(1 == 1) ? polkaSMS(loc) : '';
 $(1 == 1) ? polkaLogin(loc) : '';
