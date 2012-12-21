@@ -772,7 +772,7 @@ $('.location_info_two').html(ps_information_two);
 $('.location_address').html(ps_address);
 $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
 $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ ps_image +'" alt="" class="thumbnail">');
-$('.location_logo').html('<a href="' + ps_website + '"><img src="'+ ps_logo +'" alt=""></a>');
+$('.location_logo').html('<a href="http://' + ps_website + '"><img src="'+ ps_logo +'" alt=""></a>');
 $('.lazy').html(ps_lazy);
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 //$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
