@@ -778,7 +778,6 @@ $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashL
 //$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>' + ps_custom_css +'</style>' );
 
-
 // General Stuff //
 
 $('<div id="footer"><div id="footer-left">Copyright &#169; 2012 PolkaSpots Limited.</div><div id="footer-right"><a href="http://polkaspots.com/privacy-policy/" target="_self" title="Privacy Policy">  Privacy Policy :</a><a href="http://polkaspots.com/terms/" target="_self" title="Terms of Use">Terms of Use : </a><a href="http://polkaspots.com/support">Help : </a><a href="http://polkaspots.com/powered-by-polkaspots">Powered by PolkaSpots</a></div></div>').insertAfter('#container');
