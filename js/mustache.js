@@ -777,7 +777,7 @@ $('.lazy').html(ps_lazy);
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 //$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>' + ps_custom_css +'</style>' );
-$('.body').css('font-family', 'helvetica neue",arial,sans-serif;');
+$('body').css('font-family', 'helvetica neue",arial,sans-serif;');
 
 
 // General Stuff //
