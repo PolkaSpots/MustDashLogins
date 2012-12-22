@@ -764,7 +764,7 @@ function params(name) {
 //signature = $.md5(data.location.uampass);
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
-$('.polkaspots_logo').html('<a href="http://polkaspots.com/"><img src="http://blackhawk.polkaspots.com/global/images/polkaspots-small.png" alt=""></a>');
+$('.polkaspots_logo').html('<a href="http://polkaspots.com/"><img src="http://blackhawk.polkaspots.com/global/images/polkaspots-ns.png" alt=""></a>');
 $('.location_name').html(ps_name);
 $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
@@ -774,6 +774,7 @@ $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'
 $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ ps_image +'" alt="" class="thumbnail">');
 $('.location_logo').html('<a href="http://' + ps_website + '"><img src="'+ ps_logo +'" alt=""></a>');
 $('.lazy').html(ps_lazy);
+$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 //$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>' + ps_custom_css +'</style>' );
