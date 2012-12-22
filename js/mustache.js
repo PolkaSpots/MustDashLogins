@@ -652,17 +652,15 @@ function params(name) {
   dataType: 'jsonp',
   
  beforeSend: function() {
-	
+ 
     $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
-    $('head').append( '<meta http-equiv="Pragma" content="no-cache">' );
- 
-    //$('head').append( '<link href="https://blackhawk.polkaspots.com/global/cucumber-tony/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />' );
+    $('head').append( '<meta http-equiv="Pragma" content="no-cache">' ); 
   },
   
   success: function(data) {
   $('#polkaloader').hide();
- 
+
 
   var html = Mustache.to_html(data.form, 
    {
@@ -679,10 +677,8 @@ function params(name) {
       newsletter: data.newsletter,
       success_url: data.location.success_url,
       request_uri: data.request,
-      message: data.location.id,
       }
   );
-  
   
   
   var lazy_template = "<h1>{{location_name}}</h1> {{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
@@ -735,18 +731,6 @@ function params(name) {
       }
   );
 
- var ps_logo = Mustache.to_html("{{{ location_logo }}}", 
-   {
-      location_logo: data.location.logo_file_name,
-      }
-  );
-  
-  var ps_image = Mustache.to_html("{{{ location_image }}}", 
-   {
-      location_image: data.location.location_image_file_name,
-      }
-  );
-
   var ps_template = Mustache.to_html("{{ login_template }}", 
    {
       login_template: data.location.login_design,
@@ -760,18 +744,26 @@ function params(name) {
   );
 
 
-
+$.supersized({
+  slides  :  	[ {image : 'https://s3.amazonaws.com/ps-wifi/backgrounds/' + data.location.id + '/medium/'+ data.location.background_file_name +''} ]
+});
+				
 //signature = $.md5(data.location.uampass);
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
+
+$('.polkaspots_logo').html(( data.location.remove_ps_logo == true ) ? '<a href="http://' + ps_website + '"><img src="'+ data.location.logo_file_name +'" alt="" class=" customer-logo"></a>' : '<a href="http://polkaspots.com/"><img src="http://blackhawk.polkaspots.com/global/images/polkaspots-ns.png" alt="" class="polkaspots-logo"></a>' );
+
 $('.location_name').html(ps_name);
 $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
 $('.location_info_two').html(ps_information_two);
 $('.location_address').html(ps_address);
 $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
-$('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ ps_image +'" alt="" class="thumbnail">');
-$('.location_logo').html('<a href="http://' + ps_website + '"><img src="'+ ps_logo +'" alt=""></a>');
+$('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ data.location.location_image_file_name +'" alt="" class="thumbnail">');
+
+
+$('.location_logo').html(( data.location.remove_ps_logo == true ) ? '' : '<a href="http://' + ps_website + '"><img src="'+ data.location.logo_file_name +'" alt="" class="customer-logo"></a>' );
 $('.lazy').html(ps_lazy);
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
@@ -856,3 +848,7 @@ function polkaSMS(loc) {
 	return false;
 	});
 };
+
+jQuery(function($){				
+				
+		    });	
