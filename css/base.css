@@ -254,13 +254,21 @@ width: 100%!important;
 div#container {
 margin-left: auto;
 margin-right: auto;
-padding: 20px 20px 20px 20px;
+padding: 10px 20px 20px 20px;
 background-repeat: repeat;
 background-position: 0 0px;
 text-align: center;
 box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.4);
 -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+
+.location_info {
+  margin-bottom: 40px;
+}
+
+.location_info_two {
+  margin: 0px 0 20px 0;
 }
 
 @media (max-width: 480px) {

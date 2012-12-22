@@ -12,21 +12,14 @@ background-position: 0 0px;
 
 div#container {
 max-width: 400px;
-margin: 0 auto;
-margin-left: auto;
-margin-right: auto;
-text-align: center!important;
-border: 1px solid #c5c5c5;
-padding: 20px 20px 20px 20px;
 background-image: url(../images/white-trans.png	);
 background-repeat: repeat;
-background-position: 0 0px;
 text-align: center;
 }
 
 div#container-c2 {display:none;) 
-div.container-c1 {
 
+div.container-c1 {
 padding: 0px 0 0 0px;
 margin-left: auto;
 margin-right: auto;
