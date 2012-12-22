@@ -766,8 +766,8 @@ $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_i
 $('.location_logo').html(( data.location.remove_ps_logo == true ) ? '' : '<a href="http://' + ps_website + '"><img src="'+ data.location.logo_file_name +'" alt="" class="customer-logo"></a>' );
 $('.lazy').html(ps_lazy);
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/screen-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-//$('head').append( '<link href="https://raw.github.com/simonmorley/MustDashLogins/master/css/screen-1.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/layout-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/theme-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>' + ps_custom_css +'</style>' );
 
 // General Stuff //
