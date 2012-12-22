@@ -1,0 +1,323 @@
+.topbar {
+	background-color: white;
+	color: #343434;
+	height: 55px;
+	position: relative;
+	z-index: 1;
+	font-size: 13px;
+	margin-top: -10px;
+	padding: 10px 0 0px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 0 1px 0px #EEE inset;
+}
+
+.topbar .container {
+	position: relative;
+	max-width: 960px;
+}
+
+.topbar .logo {
+	float: left;
+	width: 96px;
+	background: url('http://blackhawk.polkaspots.com/global/images/polkaspots-ns.png') 0 10px no-repeat;
+	text-indent: -9999cm;
+	margin-top: 3px;
+	height: 40px;
+	background-size: 90px;
+}
+
+.topbar .nav-user {
+	float: right;
+	height: 63px;
+	padding-top:20px;	
+}
+
+.topbar .nav li a {
+	font-weight: normal;
+	background-color: none;
+}
+
+.topbar .customer-logo {
+	padding: 10px 0 10px 0;
+	float: left;
+}
+
+.topbar .settings {
+	float: left;
+	width: 24px;
+	background: url('/assets/settings.png') 0 0px no-repeat;
+	text-indent: -9999cm;
+	margin-top: 0px;
+	height: 24px;
+}
+
+div#peeps_container {
+max-width: 600px!important;
+margin: 0 auto;
+margin-left: auto;
+margin-right: auto;
+text-align: center!important;
+border: 1px solid #c5c5c5;
+padding: 20px 20px 20px 20px;
+background-image: url(/assets/white-trans.png	);
+/*background-color: white;*/
+background-repeat: repeat;
+background-position: 0 0px;
+min-height: 400px;
+}
+
+
+#supersized { position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; width:100%; }
+
+#supersized img{ width:auto; height:auto; position:relative; outline:none; border:none; }
+
+.location-image {margin-top: 25px;}
+
+#social li
+{
+display: inline;
+list-style-type: none;
+padding-right: 5px;
+}
+
+#social-nav a, #social-nav a:visited {
+    padding: 30px 0 10px 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    height: 0px !important;
+    color: #9E9C9C;
+}
+
+.twitter {
+background-image: url("https://ps-ec2-web-1.polkaspots.com/global/cucumber-tony/images/icons/twitter.png");
+display: block;
+height: 32px;
+float: left;
+margin-right: 5px;
+text-indent: -9999px;
+width: 32px;
+}
+.facebook {
+background-image: url("https://ps-ec2-web-1.polkaspots.com/global/cucumber-tony/images/icons/facebook.png");
+display: block;
+height: 32px;
+float: left;
+margin-right: 5px;
+text-indent: -9999px;
+width: 32px;
+}
+
+.youtube {
+background-image: url("https://ps-ec2-web-1.polkaspots.com/global/cucumber-tony/images/icons/youtube.png");
+display: block;
+height: 32px;
+float: left;
+margin-right: 5px;
+text-indent: -9999px;
+width: 32px;
+}
+
+.linkedin {
+background-image: url("https://ps-ec2-web-1.polkaspots.com/global/cucumber-tony/images/icons/linkedin.png");
+display: block;
+height: 32px;
+float: left;
+margin-right: 5px;
+text-indent: -9999px;
+width: 32px;
+}
+
+.blog {
+background-image: url("https://ps-ec2-web-1.polkaspots.com/global/cucumber-tony/images/icons/rss.png");
+display: block;
+height: 32px;
+float: left;
+margin-right: 5px;
+text-indent: -9999px;
+width: 32px;
+}
+
+
+div.break {clear:both;}
+
+.message {color: red; line-height: 42px; font-weight: bold;}
+div#errormessage {
+margin-bottom: 24px;
+color: red;
+background-color: pink;
+width: 100%;
+}
+
+ul {list-style:none;}
+
+/*  Login  */
+
+body.auth {margin-top: 100px; font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;}
+
+.auth-outer {
+	position: relative;
+	margin: 0 auto;
+
+}
+
+div#header {
+max-width: 960px;
+margin: 0 auto;
+width: 90%;
+padding: 20px 0 20px 0;
+/*background-color: #6ABCCF;
+box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);*/
+text-align: center;
+}
+
+.auth h3 {font-weight: normal; font-size: 14px; line-height: 24px;}
+.auth p {font-size: 13px;}
+.auth label {
+  width: 35%;
+  padding-top: 5px;
+}
+
+.auth label, .auth input {
+	float: left;
+	display: inline;
+}
+
+.auth_header {
+	width: 400px;
+	margin: 0 auto 10px;
+	
+}
+
+.auth input {
+	width: 65%;
+}
+
+
+.auth_container {
+	width: 400px;
+	margin: 0 auto 30px;
+	border: 1px solid #A4BACA;
+	background: #FDFDFD;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+	-ms-box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+	-o-box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding-box;
+	-khtml-background-clip: padding-box;
+	-o-background-clip: padding-box;
+	background-clip: padding-box;
+	padding: 10px;
+}
+
+/* The main styling consolodated from screen */
+
+div#footer {
+padding: 60px 0 20px 0px;
+width: 90%; 
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+font-size: 11px;
+font-weight: bold;
+}
+
+/* Links */
+#container-c2 a:link, a:visited {color: #9e9c9c; font-weight: bold;}
+div#footer a:link {color: #9e9c9c; font-weight: bold;}
+a:link {text-decoration: none;}
+
+
+/** Images **/
+
+.location_logo img{
+width: 100px;
+}
+
+/* Logos */
+
+div.polkaspots-logo-center {
+text-align: center!important;
+margin: 0 auto!important;
+width: 100%!important;
+}
+
+/* Structure */
+
+div#container {
+margin-left: auto;
+margin-right: auto;
+padding: 10px 20px 20px 20px;
+background-repeat: repeat;
+background-position: 0 0px;
+text-align: center;
+box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+-moz-box-shadow: 0 1px 2px rgba(34,25,25,0.4);
+-webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+
+.location_info {
+  margin-bottom: 40px;
+}
+
+.location_info_two {
+  margin: 0px 0 20px 0;
+}
+
+@media (max-width: 480px) {
+  
+  .zendesk {display: none;}
+  
+  body {
+  padding: 00px 0 10px 0px;
+  }
+  
+ .Green {
+  width: 200px;
+  padding: 10px 10px 10px 10px;
+  }
+ 
+  input[type="text"], input[type="password"], textarea {
+    width: 240px;
+  }
+  
+
+  h1.main {
+	font-size: 19px;
+
+   }
+   
+    h1 {
+	font-size: 16px;
+
+   }
+
+.Button {
+  font-size: 14px;
+  font-weight: bold;
+}
+ 
+}
+
+
+@media (max-width: 768px) {
+  
+.Green {
+  width: 200px;
+  padding: 10px 10px 10px 10px;
+  }
+
+.Button {
+  font-size: 14px;
+  font-weight: bold;
+}
+ 
+
+}
