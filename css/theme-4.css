@@ -3,11 +3,20 @@ background-color: white;
 background-image: url(../images/grid-18px-masked.png);
 background-repeat: repeat-x;
 background-position: 0 0px;
-color: #22373B;
+color: #211922;
 }
 
 div#container {
-background-image: url(../images/containers/white-trans.png);
+margin-left: auto;
+margin-right: auto;
+margin-top:20px;
+padding: 10px 20px 20px 20px;
+background-repeat: repeat;
+background-position: 0 0px;
+text-align: center;
+box-shadow: 0 0px 0px rgba(34, 25, 25, 0.4);
+-moz-box-shadow: 0 0 0 rgba(34,25,25,0.4);
+-webkit-box-shadow: 0 0 0 rgba(34, 25, 25, 0.4);
 }
 
 
@@ -24,14 +33,14 @@ h1 {
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 32px;
-	color: #646c6d;
+	color: #1d2125;
    }
    
 h2 {
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 38px;
-	color: #d94b38;
+	color: #1d2125;
 }
 
 h3 {
@@ -39,7 +48,7 @@ h3 {
 	font-size: 16px;
 	line-height: 32px;
 	margin-top: 0;
-	color: #d94b38;
+	color: #524D4D;
 }
 
 h4 {
@@ -59,19 +68,20 @@ h5 {
 	color: #666;
 }
 
+.muted { color: #1d2125;}
+
 p label { 
-color: #1ba5b2;
+color: #000;
 }
 
 div#footer {
-color: #1d2125;
+color: black;
 }
 
 
 /** Links **/
 
-/** Links **/
-
-a:link a:visited {text-decoration: none; color: #1d2125;}
+div#topButton a:link a:visited {text-decoration: none; color: white!important;}
 #container-c2 a:link, a:visited {color: #1d2125; font-weight: bold;}
-div#footer a:link {color: #1d2125; font-weight: bold;}
+div#footer a:link {color: #9e9c9c; font-weight: bold;}
+

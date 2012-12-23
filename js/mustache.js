@@ -731,23 +731,22 @@ function params(name) {
       }
   );
 
-  var ps_template = Mustache.to_html("{{ login_template }}", 
-   {
-      login_template: data.location.login_design,
-      }
-  );
 
-  var ps_custom_css = Mustache.to_html("{{ custom_css }}", 
-   {
-      custom_css: data.location.custom_css,
-      }
-  );
-
-
+if (data.location.login_texture == 400) {
 $.supersized({
   slides  :  	[ {image : 'https://s3.amazonaws.com/ps-wifi/backgrounds/' + data.location.id + '/medium/'+ data.location.background_file_name +''} ]
 });
-				
+
+} else if (data.location.login_texture == 0) {
+
+} else {
+
+$.supersized({
+  slides  :  	[ {image : 'https://blackhawk.polkaspots.com/global/MustDashLogins/images/textures/texture-' + data.location.login_texture +'.jpeg'} ]
+});
+
+}
+
 //signature = $.md5(data.location.uampass);
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
@@ -761,18 +760,16 @@ $('.location_info_two').html(ps_information_two);
 $('.location_address').html(ps_address);
 $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
 $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ data.location.location_image_file_name +'" alt="" class="thumbnail">');
-
-
 $('.location_logo').html(( data.location.remove_ps_logo == true ) ? '' : '<a href="http://' + ps_website + '"><img src="'+ data.location.logo_file_name +'" alt="" class="customer-logo"></a>' );
 $('.lazy').html(ps_lazy);
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/layout-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/theme-'+ ps_template +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<style>' + ps_custom_css +'</style>' );
+$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/layout-'+ data.location.login_design +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/theme-'+ data.location.login_theme +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<style>body{ font-family:' + data.location.font_family + '}'+ data.location.custom_css +'</style>' );
 
 // General Stuff //
 
-$('<div id="footer"><div id="footer-left">Copyright &#169; 2012 PolkaSpots Limited.</div><div id="footer-right"><a href="http://polkaspots.com/privacy-policy/" target="_self" title="Privacy Policy">  Privacy Policy :</a><a href="http://polkaspots.com/terms/" target="_self" title="Terms of Use">Terms of Use : </a><a href="http://polkaspots.com/support">Help : </a><a href="http://polkaspots.com/powered-by-polkaspots">Powered by PolkaSpots</a></div></div>').insertAfter('#container');
+$('<div id="footer"><div id="footer-left">Copyright &#169; 2012 PolkaSpots Limited.</div><div id="footer-right"><a href="http://polkaspots.com/privacy-policy/" target="_self" title="Privacy Policy">  Privacy Policy :</a><a href="http://polkaspots.com/terms/" target="_self" title="Terms of Use"> Terms of Use : </a><a href="http://polkaspots.com/support">Help : </a><a href="http://polkaspots.com/powered-by-polkaspots">Powered by PolkaSpots</a></div></div>').insertAfter('#container');
 
 
 $(1 == 1) ? polkaSMS(loc) : '';

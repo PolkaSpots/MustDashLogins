@@ -1,0 +1,76 @@
+body {
+background-color: white;
+background-image: url(../images/grid-18px-masked.png);
+background-repeat: repeat-x;
+background-position: 0 0px;
+color: #211922;
+}
+
+div#container {
+background-image: url(../images/containers/white-trans.png);
+}
+
+
+/**** Text ****/
+
+h1 {
+	font-weight: 700;
+	font-size: 19px;
+	line-height: 40px;
+	color: #d32b1f;
+}
+
+  h1.main {
+	font-weight: 700;
+	font-size: 22px;
+	line-height: 32px;
+	color: #d32b1f;
+   }
+   
+h2 {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 38px;
+	color: #524D4D;
+}
+
+h3 {
+	font-weight:500;
+	font-size: 16px;
+	line-height: 32px;
+	margin-top: 0;
+	color: #524D4D;
+}
+
+h4 {
+	font-weight: 500;
+	font-size: 14px;
+	Arial, sans-serif;
+	line-height: 32px;
+	color: #666;
+}
+
+h5 {
+	font-weight: 300;
+	font-size: 18px;
+	Arial, sans-serif;
+	line-height: 48px;
+	margin: 20px 0px 10px 0;
+	color: #666;
+}
+
+p label { 
+color: #524D4D;
+}
+
+div#footer {
+color: black;
+}
+
+
+/** Links **/
+
+div#topButton a:link a:visited {text-decoration: none; color: white!important;}
+#container-c2 a:link, a:visited {color: #9e9c9c; font-weight: bold;}
+div#footer a:link {color: #9e9c9c; font-weight: bold;}
+

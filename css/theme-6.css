@@ -3,7 +3,7 @@ background-color: white;
 background-image: url(../images/grid-18px-masked.png);
 background-repeat: repeat-x;
 background-position: 0 0px;
-color: #22373B;
+color: #211922;
 }
 
 div#container {
@@ -24,14 +24,14 @@ h1 {
 	font-weight: 700;
 	font-size: 22px;
 	line-height: 32px;
-	color: #646c6d;
+	color: #1d2125;
    }
    
 h2 {
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 38px;
-	color: #d94b38;
+	color: #1d2125;
 }
 
 h3 {
@@ -39,7 +39,7 @@ h3 {
 	font-size: 16px;
 	line-height: 32px;
 	margin-top: 0;
-	color: #d94b38;
+	color: #524D4D;
 }
 
 h4 {
@@ -59,19 +59,20 @@ h5 {
 	color: #666;
 }
 
+.muted { color: #1d2125;}
+
 p label { 
-color: #1ba5b2;
+color: #524D4D;
 }
 
 div#footer {
-color: #1d2125;
+color: #ccc;
 }
 
 
 /** Links **/
 
-/** Links **/
-
-a:link a:visited {text-decoration: none; color: #1d2125;}
+div#topButton a:link a:visited {text-decoration: none; color: #1d2125;}
 #container-c2 a:link, a:visited {color: #1d2125; font-weight: bold;}
-div#footer a:link {color: #1d2125; font-weight: bold;}
+div#footer a:link {color: #ccc; font-weight: bold;}
+

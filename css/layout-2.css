@@ -1,27 +1,22 @@
 body {
 position: relative;
 padding-top: 0px;
-background-color: white;
 text-align: center;
 z-index: -1000!important;
 padding: 10px 0 10px 0px;
-background-image: url(../images/grid-18px-masked.png);
-background-repeat: repeat-x;
-background-position: 0 0px;
+font-size: 14px;
 }
 
 div#container {
 max-width: 960px;
 width: 93%;
 text-align: left!important;
-background-image: url(../images/white-trans.png);
 }
 
 div#container-c1 {
 float: left;
 width: 440px;
 padding: 10px 10px 0 10px;
-border: 0px solid red!important;
 }
 
 div#container-c2 {
@@ -30,19 +25,13 @@ width: 400px;
 text-align: left;
 padding: 10px;
 margin: 10px 0 0 20px;
-border: 0px solid red;
 }
-
 
 div#header {
 max-width: 960px;
 margin: 0 auto;
 width: 90%;
 padding: 20px 0 150px 0;
-/*background-color: #6ABCCF;
-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
--moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
--webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);*/
 text-align: center;
 }
 
@@ -67,7 +56,6 @@ margin-left: auto;
 margin-right: auto;
 text-align: center;
 font-size: 11px;
-color: black;
 }
 
 div#footer-left {
@@ -78,59 +66,6 @@ float: left;
 div#footer-right {
 padding: 10px 0 20px 0;
 float: right;
-}
-
-/**** Text ****/
-
-h1 {
-	font-weight: 700;
-	font-size: 19px;
-	color: #666;
-	line-height: 32px;
-	
-}
-
-  h1.main {
-	font-weight: 700;
-	font-size: 22px;
-	color: #666;
-	line-height: 32px;
-
-   }
-   
-h2 {
-	font-weight: 500;
-	font-size: 18px;
-	color: #666;
-	line-height: 28px;
-
-}
-
-h3 {
-	font-weight:500;
-	font-size: 16px;
-	color: #666;
-	line-height: 32px;
-	margin-top: 0;
-	
-}
-
-h4 {
-	font-weight: 500;
-	font-size: 14px;
-	Arial, sans-serif;
-	color: #666;
-	line-height: 32px;
-	
-}
-
-h5 {
-	font-weight: 300;
-	font-size: 18px;
-	Arial, sans-serif;
-	color: #666;
-	line-height: 48px;
-	margin: 20px 0px 10px 0;
 }
 
 
@@ -144,10 +79,7 @@ border-bottom:0px solid #ddd;
 border-top:0px solid #ddd;
 }
 
-
-
 div#topButton {padding: 0px 0 0px 0; margin-bottom: 0px;}
-div#topButton a:link a:visited {text-decoration: none; color: white!important;}
 
 .fancylogin p {
   clear: left;
@@ -164,7 +96,6 @@ div#topButton a:link a:visited {text-decoration: none; color: white!important;}
   width: 280px;
   padding: 40px 60px 0 0px;
   text-align: left;
-  border: 0px solid green;
  }
 
 div#container-c2 {
@@ -193,7 +124,6 @@ div#container {
   width: 280px; 
   padding: 20px 0 0 0px;
   text-align: center;
-  border: 0px solid red;
  }
 
 div#container-c2 {
