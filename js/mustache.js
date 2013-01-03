@@ -758,7 +758,7 @@ $('.location_info').html(ps_information);
 $('.location_info_two').html(ps_information_two);
 $('.location_address').html(ps_address);
 $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
-$('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/256/medium/'+ data.location.image +'" alt="" class="thumbnail">');
+$('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/' + data.location.id + '/medium/'+ data.location.image +'" alt="" class="thumbnail">');
 $('.location_logo').html(( data.location.remove_polkaspots == true ) ? '' : '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class="customer-logo"></a>' );
 $('.lazy').html(ps_lazy);
 $('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
