@@ -646,14 +646,14 @@ function params(name) {
  function polkaSpots(auth,loc) {
  $location = loc
  $.ajax({
-  url: 'http://127.0.0.1:8080/api/v1/locations/logins.json',
+  url: 'https://mywifi.polkaspots.com/api/v1/locations/logins.json',
   type: 'application/x-javascript',
   data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
   dataType: 'jsonp',
   
  beforeSend: function() {
  
-    $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
+    $('#polkaloader').html('<img src="https://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' ); 
   },
