@@ -646,7 +646,7 @@ function params(name) {
  function polkaSpots(auth,loc) {
  $location = loc
  $.ajax({
-  url: 'https://mywifi.polkaspots.com/api/v1/locations/logins.json',
+  url: 'http://my-wifi.co:8080/api/v1/locations/logins.json',
   type: 'application/x-javascript',
   data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
   dataType: 'jsonp',
@@ -817,8 +817,7 @@ function polkaSMS(loc) {
 	 $('#polkaloader').fadeIn();
 	 $.ajax({
 	 dataType: 'jsonp',
-	 // url: $form.attr( 'action' ),
-	 url: 'https://mywifi.polkaspots.com/api/v1/locations/automatik.json',
+	 url: 'http://my-wifi.co:8080/api/v1/locations/automatik.json',
    data: $form.serialize() + '&request_uri=' + document.location.hostname + '&location_id=' + loc + '&mac=' + params('mac'),
 
 	 success: function(data) {
