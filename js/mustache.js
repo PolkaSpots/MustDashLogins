@@ -651,13 +651,6 @@ function params(name) {
   data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
   dataType: 'jsonp',
   
- beforeSend: function() {
- 
-    $('#polkaloader').html('<img src="http://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
-    $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
-    $('head').append( '<meta http-equiv="Pragma" content="no-cache">' ); 
-  },
-  
   success: function(data) {
   $('#polkaloader').hide();
 
