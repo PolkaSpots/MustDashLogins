@@ -646,7 +646,7 @@ function params(name) {
  function polkaSpots(auth,loc) {
  $location = loc
  $.ajax({
-  url: 'http://127.0.0.1:8080/api/v1/locations/logins.json',
+  url: 'http://192.168.0.5:8080/api/v1/locations/logins.json',
   type: 'application/x-javascript',
   data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
   dataType: 'jsonp',
