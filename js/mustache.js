@@ -817,7 +817,7 @@ function polkaSMS(loc) {
 	 $('#polkaloader').fadeIn();
 	 $.ajax({
 	 dataType: 'jsonp',
-	 url: 'http://127.0.0.1:8080/api/v1/locations/automatik.json',
+	 url: 'https://mywifi.polkaspots.com/api/v1/locations/automatik.json',
    data: $form.serialize() + '&request_uri=' + document.location.hostname + '&location_id=' + loc + '&mac=' + params('mac'),
 
 	 success: function(data) {
