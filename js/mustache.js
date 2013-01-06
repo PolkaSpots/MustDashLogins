@@ -653,7 +653,7 @@ function params(name) {
   
  beforeSend: function() {
  
-    $('#polkaloader').html('<img src="https://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">');
+    $('#polkaloader').html('<img src="https://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader.gif" alt="">Loading...');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' ); 
   },
