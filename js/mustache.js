@@ -836,6 +836,7 @@ function polkaSMS(loc) {
 	      username: data.username,
 	      newsletter: data.newsletter,
 	      success_url: data.location.success_url,
+				unique_id: data.location.unique_id
 	      }
 	  );
 		$('#test').hide().html(new_data).fadeIn();
