@@ -731,21 +731,22 @@ function params(name) {
       location_website: data.location.website,
       }
   );
-
+  
+  var registration_link = Mustache.to_html("{{ remove_registration_link }}",
+ 		{
+			registration_link: data.location.remove_registration_link
+		}
+	);
 
 if (data.location.texture == 400) {
 $.supersized({
   slides  :  	[ {image : 'https://s3.amazonaws.com/ps-wifi/backgrounds/' + data.location.id + '/large/'+ data.location.background +''} ]
 });
-
 } else if (data.location.texture == 0) {
-
 } else {
-
 $.supersized({
   slides  :  	[ {image : 'https://blackhawk.polkaspots.com/global/MustDashLogins/images/textures/texture-' + data.location.texture +'.jpeg'} ]
 });
-
 }
 
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
