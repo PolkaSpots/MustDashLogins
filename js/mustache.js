@@ -734,7 +734,7 @@ function params(name) {
   
   var ps_registration_link = Mustache.to_html("{{ remove_registration_link }}",
  		{
-			registration_link: data.location.remove_registration_link
+			registration_link: data.location.remove_registration_link,
 		}
 	);
 
