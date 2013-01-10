@@ -732,7 +732,7 @@ function params(name) {
       }
   );
   
-  var ps_registration_link = Mustache.to_html("{{ registration_link }}",
+  var ps_registration_link = Mustache.to_html("{{{ registration_link }}}",
  		{
 			registration_link: data.location.registration_link,
 		}
