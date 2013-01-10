@@ -732,7 +732,7 @@ function params(name) {
       }
   );
   
-  var registration_link = Mustache.to_html("{{ remove_registration_link }}",
+  var ps_registration_link = Mustache.to_html("{{ remove_registration_link }}",
  		{
 			registration_link: data.location.remove_registration_link
 		}
@@ -754,7 +754,7 @@ $('#polkaform').html(html);
 
 $('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
 
-$('#registration_link').html(location_website);
+$('#registration_link').html(ps_registration_link);
 $('.location_name').html(ps_name);
 $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
