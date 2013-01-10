@@ -734,12 +734,6 @@ function params(name) {
       }
   );
   
-  var ps_registration_link = Mustache.to_html("{{{ registration_link }}}",
- 		{
-			registration_link: data.location.registration_link,
-		}
-	);
-
 if (data.location.texture == 400) {
 $.supersized({
   slides  :  	[ {image : 'https://s3.amazonaws.com/ps-wifi/backgrounds/' + data.location.id + '/large/'+ data.location.background +''} ]
@@ -761,7 +755,6 @@ $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
 $('.location_info_two').html(ps_information_two);
 $('.location_address').html(ps_address);
-$('.registration_link').html(ps_registration_link);
 $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
 if (data.location.image != null) {
   $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/' + data.location.id + '/medium/'+ data.location.image +'" alt="" class="thumbnail">');
