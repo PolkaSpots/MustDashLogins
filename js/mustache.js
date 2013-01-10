@@ -674,7 +674,7 @@ function params(name) {
       pathname: '/login?',
       username: data.username,
       password: data.password,
-      newsletter: data.newsletter,
+      newsletter: data.location.newsletter,
       success_url: data.location.success_url,
       request_uri: data.request,
 			unique_id: data.location.unique_id,
