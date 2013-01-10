@@ -678,6 +678,7 @@ function params(name) {
       success_url: data.location.success_url,
       request_uri: data.request,
       unique_id: data.location.unique_id,
+			remove_registration_link: data.location.remove_registration_link
       }
   );
   
@@ -837,7 +838,8 @@ function polkaSMS(loc) {
 	      username: data.username,
 	      newsletter: data.newsletter,
 	      success_url: data.location.success_url,
-				unique_id: data.location.unique_id
+				unique_id: data.location.unique_id,
+				remove_registration_link: data.location.remove_registration_link
 	      }
 	  );
 		$('#test').hide().html(new_data).fadeIn();
