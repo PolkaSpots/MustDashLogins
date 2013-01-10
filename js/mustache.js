@@ -677,7 +677,9 @@ function params(name) {
       newsletter: data.newsletter,
       success_url: data.location.success_url,
       request_uri: data.request,
-			unique_id: data.location.unique_id
+			unique_id: data.location.unique_id,
+			registration_link: data.location.id
+			
       }
   );
   
