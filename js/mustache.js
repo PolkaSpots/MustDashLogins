@@ -754,12 +754,12 @@ $('#polkaform').html(html);
 
 $('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
 
-$('#test').html(ps_registration_link);
 $('.location_name').html(ps_name);
 $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
 $('.location_info_two').html(ps_information_two);
 $('.location_address').html(ps_address);
+$('.registration_link').html(ps_registration_link);
 $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
 if (data.location.image != null) {
   $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/' + data.location.id + '/medium/'+ data.location.image +'" alt="" class="thumbnail">');
