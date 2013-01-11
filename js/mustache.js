@@ -735,7 +735,7 @@ function polkaSpots(auth,loc) {
   $('#polkaloader').hide();
 
   if (data.location.network ==  1) {
-	  $pathname = '/'+params('login_url');
+	  $pathname = '/login_url?'+params('login_url');
 	}
 	else if ( data.location.network == 2 ) {
 		$pathname = '/login?';
