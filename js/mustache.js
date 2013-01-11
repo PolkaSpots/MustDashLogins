@@ -625,6 +625,79 @@ var Mustache;
 }())));
 
 
+/*!
+ * jQuery Cookie Plugin v1.3
+ * https://github.com/carhartl/jquery-cookie
+ *
+ * Copyright 2011, Klaus Hartl
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.opensource.org/licenses/GPL-2.0
+ */
+(function ($, document, undefined) {
+
+	var pluses = /\+/g;
+
+	function raw(s) {
+		return s;
+	}
+
+	function decoded(s) {
+		return decodeURIComponent(s.replace(pluses, ' '));
+	}
+
+	var config = $.cookie = function (key, value, options) {
+
+		// write
+		if (value !== undefined) {
+			options = $.extend({}, config.defaults, options);
+
+			if (value === null) {
+				options.expires = -1;
+			}
+
+			if (typeof options.expires === 'number') {
+				var days = options.expires, t = options.expires = new Date();
+				t.setDate(t.getDate() + days);
+			}
+
+			value = config.json ? JSON.stringify(value) : String(value);
+
+			return (document.cookie = [
+				encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
+				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+				options.path    ? '; path=' + options.path : '',
+				options.domain  ? '; domain=' + options.domain : '',
+				options.secure  ? '; secure' : ''
+			].join(''));
+		}
+
+		// read
+		var decode = config.raw ? raw : decoded;
+		var cookies = document.cookie.split('; ');
+		for (var i = 0, l = cookies.length; i < l; i++) {
+			var parts = cookies[i].split('=');
+			if (decode(parts.shift()) === key) {
+				var cookie = decode(parts.join('='));
+				return config.json ? JSON.parse(cookie) : cookie;
+			}
+		}
+
+		return null;
+	};
+
+	config.defaults = {};
+
+	$.removeCookie = function (key, options) {
+		if ($.cookie(key) !== null) {
+			$.cookie(key, null, options);
+			return true;
+		}
+		return false;
+	};
+
+})(jQuery, document);
+
 /*
  * PolkaSpots Magic Form Code Version 0.1
  * Use it but don't fuck with it, steal it or claim it's yours
@@ -643,7 +716,7 @@ function params(name) {
   );
 }
 
- function polkaSpots(auth,loc) {
+function polkaSpots(auth,loc) {
  $location = loc
  $.ajax({
   url: 'https://api.polkaspots.com/api/v1/locations/logins.json',
@@ -769,8 +842,13 @@ $('head').append( '<style>body{ font-family:' + data.location.font + '}'+ data.l
 
 $('<div id="footer"><div id="footer-left">Copyright &#169; 2012 PolkaSpots Limited.</div><div id="footer-right"><a href="http://polkaspots.com/privacy-policy/" target="_self" title="Privacy Policy">  Privacy Policy :</a><a href="http://polkaspots.com/terms/" target="_self" title="Terms of Use"> Terms of Use : </a><a href="http://polkaspots.com/support">Help : </a><a href="http://polkaspots.com/powered-by-polkaspots">Powered by PolkaSpots</a></div></div>').insertAfter('#container');
 
+if ( params('notyet') != null ) {
+	$.cookie('uamip', params('uamip'));	
+	$.cookie('uamport', params('uamport'));	
+}
 
-$(1 == 1) ? polkaSMS(loc) : '';
+jsonStatus();
+$(1 == 2) ? polkaSMS(loc) : '';
 $(1 == 1) ? polkaLogin(loc) : '';
 
 },
@@ -790,7 +868,6 @@ function polkaLogin() {
 	 $.ajax({
 	 type: 'GET',
 	 url: $form.attr( 'action' ),
-	 //url: 'http://localhost:8080/api/v1/automatik.json',
    data: $form.serialize(),
 
 	 success: function(data) {
@@ -844,6 +921,20 @@ function polkaSMS(loc) {
 	});
 };
 
-jQuery(function($){				
-				
-		    });
+function jsonStatus() {
+ $.ajax({
+  url: 'http://'+$.cookie('uamip')+':'+($.cookie('uamport'))+'/json/status',
+  type: 'application/x-javascript',
+  dataType: 'jsonp',
+   
+  success: function(data) {
+	 $('#polkaStatus').html(data.response)
+	 
+},
+
+  error: function(data) {
+  alert("fail");
+}
+
+});
+};
