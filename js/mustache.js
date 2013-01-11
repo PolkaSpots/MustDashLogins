@@ -674,16 +674,16 @@ function params(name) {
       pathname: '/login?',
       username: data.username,
       password: data.password,
-      newsletter: data.newsletter,
+      newsletter: data.location.newsletter,
       success_url: data.location.success_url,
       request_uri: data.request,
-      unique_id: data.location.unique_id,
-			remove_registration_link: data.location.remove_registration_link
+			unique_id: data.location.unique_id,
+			registration_link: data.location.registration_link
       }
   );
   
   
-  var lazy_template = "<h1>{{location_name}}</h1> {{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
+  var lazy_template = "<h1>{{location_name}}</h1>{{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
   
   var ps_lazy = Mustache.to_html(lazy_template, 
    {
@@ -732,21 +732,16 @@ function params(name) {
       location_website: data.location.website,
       }
   );
-
-
+  
 if (data.location.texture == 400) {
 $.supersized({
   slides  :  	[ {image : 'https://s3.amazonaws.com/ps-wifi/backgrounds/' + data.location.id + '/large/'+ data.location.background +''} ]
 });
-
 } else if (data.location.texture == 0) {
-
 } else {
-
 $.supersized({
   slides  :  	[ {image : 'https://blackhawk.polkaspots.com/global/MustDashLogins/images/textures/texture-' + data.location.texture +'.jpeg'} ]
 });
-
 }
 
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
