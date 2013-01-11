@@ -734,7 +734,13 @@ function polkaSpots(auth,loc) {
   success: function(data) {
   $('#polkaloader').hide();
 
-
+  if (data.location.network ==  1) {
+	  $pathname = params('login_url');
+	}
+	else if ( data.location.network == 2 ) {
+		$pathname = '/login?';
+	}
+	
   var html = Mustache.to_html(data.form, 
    {
       challenge: params('challenge'),
@@ -744,7 +750,7 @@ function polkaSpots(auth,loc) {
       mac: params('mac'),
       sessionid: params('sessionid'),
       ip: params('ip'),
-      pathname: '/login?',
+      pathname: $pathname,
       username: data.username,
       password: data.password,
       newsletter: data.location.newsletter,
@@ -822,6 +828,7 @@ $('#polkaform').html(html);
 
 $('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
 
+$('.test').html(data.location.network);
 $('.location_name').html(ps_name);
 $('.location_header').html(ps_header);
 $('.location_info').html(ps_information);
@@ -878,13 +885,13 @@ function polkaLogin() {
 		
 	},
  	error: function(data) {
-	
 		alert("111111");
 	}
 	});
 	return false;
 	});
 };
+
 // SMS Auth //
 function polkaSMS(loc) {
 	var $form = $('#myForm');
@@ -933,7 +940,6 @@ function jsonStatus() {
 },
 
   error: function(data) {
-  alert("fail");
 }
 
 });
