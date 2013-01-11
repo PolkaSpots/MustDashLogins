@@ -679,12 +679,11 @@ function params(name) {
       request_uri: data.request,
 			unique_id: data.location.unique_id,
 			registration_link: data.location.registration_link
-			
       }
   );
   
   
-  var lazy_template = "<h1>{{location_name}}</h1> {{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
+  var lazy_template = "<h1>{{location_name}}</h1>{{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
   
   var ps_lazy = Mustache.to_html(lazy_template, 
    {
