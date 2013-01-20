@@ -840,9 +840,9 @@ if (data.location.image != null) {
 }
 $('.location_logo').html(( data.location.remove_polkaspots == true ) ? '' : '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class="customer-logo"></a>' );
 $('.lazy').html(ps_lazy);
-$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/layout-'+ data.location.design +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="https://blackhawk.polkaspots.com/global/MustDashLogins/css/theme-'+ data.location.theme +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="http://mustache.my-wifi.co/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="http://mustache.my-wifi.co/css/layout-'+ data.location.design +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+$('head').append( '<link href="http://mustache.my-wifi.co/css/theme-'+ data.location.theme +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>body{ font-family:' + data.location.font + '}'+ data.location.css +'</style>' );
 
 // General Stuff //
