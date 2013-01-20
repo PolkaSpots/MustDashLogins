@@ -726,7 +726,7 @@ function polkaSpots(auth,loc) {
   
  beforeSend: function() {
  
-    $('#polkaloader').html('<img src="https://blackhawk.polkaspots.com/global/cucumber-tony/images/ajax-loader-1.gif" alt=""><h1>Loading...</h1>');
+    $('#polkaloader').html('<img src="http://mustache.my-wifi.co/images/ajax-loader-1.gif" alt=""><h1>Loading...</h1>');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' ); 
   },
@@ -819,7 +819,7 @@ $.supersized({
 } else if (data.location.texture == 0) {
 } else {
 $.supersized({
-  slides  :  	[ {image : 'https://blackhawk.polkaspots.com/global/MustDashLogins/images/textures/texture-' + data.location.texture +'.jpeg'} ]
+  slides  :  	[ {image : 'http://mustache.my-wifi.co/images/textures/texture-' + data.location.texture +'.jpeg'} ]
 });
 }
 
