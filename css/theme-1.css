@@ -73,5 +73,5 @@ color: #1d2125;
 /** Links **/
 
 a:link a:visited {text-decoration: none; color: #1d2125;}
-#container-c2 a:link, a:visited {color: #1d2125; font-weight: bold;}
+/* #container-c2 a:link, a:visited {color: #1d2125; font-weight: bold;} */
 div#footer a:link {color: #1d2125; font-weight: bold;}

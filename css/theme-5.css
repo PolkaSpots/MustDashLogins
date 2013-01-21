@@ -82,6 +82,6 @@ color: #dbdbdb;
 /** Links **/
 
 a:link a:visited {text-decoration: none; color: #ccc;}
-#container-c2 a:link, a:visited {color: #dbdbdb; font-weight: bold;}
+/* #container-c2 a:link, a:visited {color: #dbdbdb; font-weight: bold;} */
 div#footer a:link {color: #ccc; font-weight: bold;}
 
