@@ -722,20 +722,26 @@ function polkaSpots(auth,loc) {
   url: 'https://api.polkaspots.com/api/v1/locations/logins.json',
   type: 'application/x-javascript',
   data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
-  dataType: 'jsonp',
+  dataType: 'JSONP',
   
  beforeSend: function() {
- 
-    $('#polkaloader').html('<img src="http://mustache.my-wifi.co/images/ajax-loader-1.gif" alt=""><h1>Loading...</h1>');
+	  $('head').append( '<link href="http://mustache.my-wifi.co/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
+ 		$('body').addClass('magic-loader');
+    $('#polkaloader').html('<img src="http://mustache.my-wifi.co/images/ajax-loader.gif" alt=""><h1>Loading</h1><h2>(Squeezing the Internet into a very small space)</h2>');
     $('head').append( '<meta http-equiv="Cache-control" content="no-cache">' );
     $('head').append( '<meta http-equiv="Pragma" content="no-cache">' ); 
   },
   
   success: function(data) {
   $('#polkaloader').hide();
-
+  $('body').removeClass('magic-loader');
+  
+  if (data.location.archived == true ) {
+	  $('body').addClass('closed-for-business');
+	}
+  
   if (data.location.network ==  1) {
-	  $pathname = decodeURIComponent(params('login_url'));
+	  $pathname = params('login_url');
 	}
 	else if ( data.location.network == 2 ) {
 		$pathname = '/login?';
@@ -830,8 +836,8 @@ $('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a hre
 
 $('.test').html(data.location.network);
 $('.location_name').html(ps_name);
-$('.location_header').html(ps_header);
-$('.location_info').html(ps_information);
+$('.location_header').html('<h1>' + ps_header + '</h1>');
+$('.location_info').html('<h2>' + ps_information  + '</h2>');
 $('.location_info_two').html(ps_information_two);
 $('.location_address').html(ps_address);
 $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
@@ -840,7 +846,6 @@ if (data.location.image != null) {
 }
 $('.location_logo').html(( data.location.remove_polkaspots == true ) ? '' : '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class="customer-logo"></a>' );
 $('.lazy').html(ps_lazy);
-$('head').append( '<link href="http://mustache.my-wifi.co/css/base.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<link href="http://mustache.my-wifi.co/css/layout-'+ data.location.design +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<link href="http://mustache.my-wifi.co/css/theme-'+ data.location.theme +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<style>body{ font-family:' + data.location.font + '}'+ data.location.css +'</style>' );
@@ -891,7 +896,6 @@ function polkaLogin() {
 	return false;
 	});
 };
-
 // SMS Auth //
 function polkaSMS(loc) {
 	var $form = $('#myForm');
