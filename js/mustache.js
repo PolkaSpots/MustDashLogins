@@ -741,7 +741,7 @@ function polkaSpots(auth,loc) {
 	}
   
   if (data.location.network ==  1) {
-	  $pathname = params('login_url');
+	  $pathname = decodeURIComponent(params('login_url'));
 	}
 	else if ( data.location.network == 2 ) {
 		$pathname = '/login?';
