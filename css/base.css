@@ -1,3 +1,6 @@
+body {
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif!important;
+}
 .topbar {
 	background-color: white;
 	color: #343434;
@@ -62,9 +65,39 @@
 	height: 24px;
 }
 
+body.closed-for-business {
+  background-color: #c93524;
+ }
 
+.closed-for-business h1 {
+  color: white;
+  font-size: 42px;
+  }
 
+.closed-for-business h2, h3 {
+  color: #f2bdb9;
+}
+.closed-for-business a {color:white}
+.closed-for-business p {color:white}
+.closed-for-business .location_logo {display:none}
+
+body.magic-loader { 
+  background-color: #cee7de; 
+  margin-top: 140px;
+}
+body.magic-loader .topbar { display: none!important; }
+body.magic-loader #container { display: none!important; }
+body.magic-loader h1 {
+  color: #5b5c5d;
+  font-size: 100px;
+  line-height: 30px;
+}
+body.magic-loader h2 {
+  color: #45bcd2;
+  font-size: 20px;
+}
 #supersized { position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; width:100%; }
+
 
 #supersized img{ width:auto; height:auto; position:relative; outline:none; border:none; }
 
@@ -93,8 +126,7 @@ width: 90%;
 margin-left: auto;
 margin-right: auto;
 text-align: center;
-font-size: 11px;
-font-weight: bold;
+font-size: 12px;
 }
 
 /* Links */
@@ -134,7 +166,7 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 
 .location_info {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .location_info_two {
@@ -164,25 +196,7 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 
    }
 
-.Button {
-  font-size: 14px;
-  font-weight: bold;
-}
  
 }
 
 
-@media (max-width: 768px) {
-  
-.Green {
-  width: 200px;
-  padding: 10px 10px 10px 10px;
-  }
-
-.Button {
-  font-size: 14px;
-  font-weight: bold;
-}
- 
-
-}
