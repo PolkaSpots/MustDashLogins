@@ -73,6 +73,6 @@ color: black;
 /** Links **/
 
 div#topButton a:link a:visited {text-decoration: none; color: white!important;}
-#container-c2 a:link, a:visited {color: #1d2125; font-weight: bold;}
+/* #container-c2 a:link, a:visited {color: #1d2125; font-weight: bold;} */
 div#footer a:link {color: #9e9c9c; font-weight: bold;}
 
