@@ -832,7 +832,7 @@ $.supersized({
 $('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
 $('#polkaform').html(html);
 
-$('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
+$('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_website + '"><img src="https://s3.amazonaws.com/ps-wifi/logos/' + data.location.id +'/medium/'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
 
 $('.test').html(data.location.network);
 $('.location_name').html(ps_name);
@@ -844,7 +844,7 @@ $('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'
 if (data.location.image != null) {
   $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/' + data.location.id + '/medium/'+ data.location.image +'" alt="" class="thumbnail">');
 }
-$('.location_logo').html(( data.location.remove_polkaspots == true ) ? '' : '<a href="http://' + ps_website + '"><img src="'+ data.location.logo +'" alt="" class="customer-logo"></a>' );
+$('.location_logo').html(( data.location.remove_polkaspots == true ) ? '' : '<a href="http://' + ps_website + '"><img src="https://s3.amazonaws.com/ps-wifi/logos/' + data.location.id +'/medium/'+ data.location.logo +'" alt="" class=" customer-logo"></a>' );
 $('.lazy').html(ps_lazy);
 $('head').append( '<link href="http://mustache.my-wifi.co/css/layout-'+ data.location.design +'.css" media="screen" rel="stylesheet" type="text/css" />' );
 $('head').append( '<link href="http://mustache.my-wifi.co/css/theme-'+ data.location.theme +'.css" media="screen" rel="stylesheet" type="text/css" />' );
