@@ -7,8 +7,9 @@ text-align: center;
 z-index: -1000!important;
 padding: 10px 0 10px 0px;
 font-size: 14px;
-
 }
+
+.center-me { text-align: center}
 
 div#container {
 max-width: 400px;
