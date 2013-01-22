@@ -15,9 +15,9 @@ background-image: url(../images/containers/white-trans.png);
 
 h1 {
 	font-weight: 700;
-	font-size: 19px;
+	font-size: 21px;
 	line-height: 24px;
-	color: #1d2125;
+	color: #1ba5b2;
 }
 
   h1.main {
@@ -39,7 +39,7 @@ h3 {
 	font-size: 16px;
 	line-height: 32px;
 	margin-top: 0;
-	color: #d94b38;
+	color: #1d2125;
 }
 
 h4 {
@@ -60,7 +60,8 @@ h5 {
 }
 
 p label { 
-color: #1ba5b2;
+	color: #1ba5b2;
+	size: 17px;		
 }
 
 div#footer {
