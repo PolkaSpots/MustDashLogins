@@ -742,9 +742,16 @@ function polkaSpots(auth,loc) {
   
   if (data.location.network ==  1) {
 	  $pathname = decodeURIComponent(params('login_url'));
+	  if (data.location.success_url == '' ) {
+		  $success_url = decodeURIComponent(params('continue_url'));
+		}
+		else {
+			$success_url = data.location.success_url
+		}
 	}
 	else if ( data.location.network == 2 ) {
 		$pathname = '/login?';
+		$success_url = ''
 	}
 	
   var html = Mustache.to_html(data.form, 
