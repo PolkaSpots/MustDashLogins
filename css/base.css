@@ -166,6 +166,8 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 }
 
+div#polkaloader {margin: 0 auto; text-align: center; max-width: 500px!important; margin-top: 100px;}
+
 .location_info {
   margin-bottom: 10px;
 }
@@ -197,7 +199,11 @@ box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
 
    }
 
- 
 }
 
+@media (max-width: 979px) { /* iPhone */
+  body.magic-loader h1 {
+    font-size: 40px;
+  }
+}
 
