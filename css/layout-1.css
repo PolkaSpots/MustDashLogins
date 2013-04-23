@@ -45,7 +45,7 @@ width: 130px;
 }
 
 div#polkaform { text-align: center;}
-div#polkaform textarea, input[type="text"], input[type="password"] { width:90%;}
+div#polkaform textarea, input[type="text"], input[type="password"] { width:80%;}
 /*div.location_address, .location_rebsite {text-align: left;}*/
 
 div.polkaspots-logo-center {
