@@ -866,7 +866,7 @@ function polkaSpots(auth,loc) {
 
 	$('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_location_website + '"><img src="https://s3.amazonaws.com/ps-wifi/logos/' + data.location.id +'/medium/'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
 
-	$('#message').html('<h3>' + data.message + '</h3');
+	$('#message').html(( data.message != null ) ? ('<h3>' + data.message + '</h3') : '');
 
 	$('.location_name').html(ps_name);
 	$('.location_header').html('<h1>' + ps_header + '</h1>');
