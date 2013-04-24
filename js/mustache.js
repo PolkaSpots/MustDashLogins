@@ -626,15 +626,21 @@ var Mustache;
 
 
 /*!
- * jQuery Cookie Plugin v1.3
+ * jQuery Cookie Plugin v1.3.1
  * https://github.com/carhartl/jquery-cookie
  *
- * Copyright 2011, Klaus Hartl
- * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.opensource.org/licenses/GPL-2.0
+ * Copyright 2013 Klaus Hartl
+ * Released under the MIT license
  */
-(function ($, document, undefined) {
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as anonymous module.
+		define(['jquery'], factory);
+	} else {
+		// Browser globals.
+		factory(jQuery);
+	}
+}(function ($) {
 
 	var pluses = /\+/g;
 
@@ -646,15 +652,21 @@ var Mustache;
 		return decodeURIComponent(s.replace(pluses, ' '));
 	}
 
+	function converted(s) {
+		if (s.indexOf('"') === 0) {
+			// This is a quoted cookie as according to RFC2068, unescape
+			s = s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+		}
+		try {
+			return config.json ? JSON.parse(s) : s;
+		} catch(er) {}
+	}
+
 	var config = $.cookie = function (key, value, options) {
 
 		// write
 		if (value !== undefined) {
 			options = $.extend({}, config.defaults, options);
-
-			if (value === null) {
-				options.expires = -1;
-			}
 
 			if (typeof options.expires === 'number') {
 				var days = options.expires, t = options.expires = new Date();
@@ -664,7 +676,9 @@ var Mustache;
 			value = config.json ? JSON.stringify(value) : String(value);
 
 			return (document.cookie = [
-				encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
+				config.raw ? key : encodeURIComponent(key),
+				'=',
+				config.raw ? value : encodeURIComponent(value),
 				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
 				options.path    ? '; path=' + options.path : '',
 				options.domain  ? '; domain=' + options.domain : '',
@@ -675,33 +689,43 @@ var Mustache;
 		// read
 		var decode = config.raw ? raw : decoded;
 		var cookies = document.cookie.split('; ');
+		var result = key ? undefined : {};
 		for (var i = 0, l = cookies.length; i < l; i++) {
 			var parts = cookies[i].split('=');
-			if (decode(parts.shift()) === key) {
-				var cookie = decode(parts.join('='));
-				return config.json ? JSON.parse(cookie) : cookie;
+			var name = decode(parts.shift());
+			var cookie = decode(parts.join('='));
+
+			if (key && key === name) {
+				result = converted(cookie);
+				break;
+			}
+
+			if (!key) {
+				result[name] = converted(cookie);
 			}
 		}
 
-		return null;
+		return result;
 	};
 
 	config.defaults = {};
 
 	$.removeCookie = function (key, options) {
-		if ($.cookie(key) !== null) {
-			$.cookie(key, null, options);
+		if ($.cookie(key) !== undefined) {
+			// Must not alter options, thus extending a fresh object...
+			$.cookie(key, '', $.extend({}, options, { expires: -1 }));
 			return true;
 		}
 		return false;
 	};
 
-})(jQuery, document);
+}));
 
-/*
+/*!
  * PolkaSpots Magic Form Code Version 0.1
- * Use it but don't fuck with it, steal it or claim it's yours
- * If you like it, put our name on it.
+ * Use it, but don't but don't steal it or claim it's yours
+ * If you like it, put our name on it. If you like it a lot
+ * You should email simon@polkaspots.com
  *
  * Copyright 2012, PolkaSpots Limited
  * http://polkaspots.com
@@ -710,6 +734,7 @@ var Mustache;
  * http://creativecommons.org/licenses/MIT/
  * 
  */
+
 function params(name) {
   return decodeURI(
     (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
@@ -721,7 +746,7 @@ function polkaSpots(auth,loc) {
  $.ajax({
   url: 'https://api.polkaspots.com/api/v1/locations/logins.json',
   type: 'application/x-javascript',
-  data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac')},
+  data: { 'customer_id' : auth, 'location_id' : loc, 'request_uri' : document.location.hostname, 'mac' : params('mac'), 'sms' : $.cookie("sms") },
   dataType: 'JSONP',
   
  beforeSend: function() {
@@ -740,7 +765,7 @@ function polkaSpots(auth,loc) {
 	  $('body').addClass('closed-for-business');
 	}
   
-  if (data.location.network ==  1) {
+  if (data.location.network ==  'Meraki') {
 	  $pathname = decodeURIComponent(params('login_url'));
 	  if (data.location.success_url == '' ) {
 		  $success_url = decodeURIComponent(params('continue_url'));
@@ -749,9 +774,9 @@ function polkaSpots(auth,loc) {
 			$success_url = data.location.success_url
 		}
 	}
-	else if ( data.location.network == 2 ) {
-		$pathname = '/login?';
-		$success_url = ''
+	else if ( data.location.network == 'PolkaSpots' ) {
+		$pathname = '/login';
+		$success_url = $success_url = data.location.success_url
 	}
 	
   var html = Mustache.to_html(data.form, 
@@ -767,13 +792,12 @@ function polkaSpots(auth,loc) {
       username: data.username,
       password: data.password,
       newsletter: data.location.newsletter,
-      success_url: data.location.success_url,
+      success_url: $success_url,
       request_uri: data.request,
 			unique_id: data.location.unique_id,
 			registration_link: data.location.registration_link
       }
   );
-  
   
   var lazy_template = "<h1>{{location_name}}</h1>{{{location_header}}}<p>{{{location_info}}}</p><p>{{{location_info_two}}}</p><p>{{{ location_address }}}</p><a href='http://{{{ location_website }}}'>{{{location_website}}}</a>";
   
@@ -819,104 +843,87 @@ function polkaSpots(auth,loc) {
       }
   );
   
- var ps_website = Mustache.to_html("{{{ location_website }}}", 
+ var ps_location_website = Mustache.to_html("{{{ location_website }}}", 
    {
       location_website: data.location.website,
       }
   );
+
   
-if (data.location.texture == 400) {
-$.supersized({
-  slides  :  	[ {image : 'https://s3.amazonaws.com/ps-wifi/backgrounds/' + data.location.id + '/large/'+ data.location.background +''} ]
-});
-} else if (data.location.texture == 0) {
-} else {
-$.supersized({
-  slides  :  	[ {image : 'http://mustache.my-wifi.co/images/textures/texture-' + data.location.texture +'.jpeg'} ]
-});
-}
+	if (data.location.texture == 400) {
+		$.supersized({
+		  slides  :  	[ {image : 'https://s3.amazonaws.com/ps-wifi/backgrounds/' + data.location.id + '/large/'+ data.location.background +''} ]
+		});
+		} else if (data.location.texture == 0) {
+		} else {
+		$.supersized({
+		  slides  :  	[ {image : 'http://mustache.my-wifi.co/images/textures/texture-' + data.location.texture +'.jpeg'} ]
+		});
+	}
 
-$('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
-$('#polkaform').html(html);
+	$('head').append((params('res') == 'login') ? '<meta http-equiv="refresh" content="0;url=http://' + params('uamip') + ':' + params('uamport') +'/?username=' + params('UserName') + '&password=' + params('Password') + '&userurl=' + params('UserName') + '\">'  :  '' );
+	$('#polkaform').html(html);
 
-$('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_website + '"><img src="https://s3.amazonaws.com/ps-wifi/logos/' + data.location.id +'/medium/'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
+	$('.polkaspots_logo').html(( data.location.remove_polkaspots == true ) ? '<a href="http://' + ps_location_website + '"><img src="https://s3.amazonaws.com/ps-wifi/logos/' + data.location.id +'/medium/'+ data.location.logo +'" alt="" class=" customer-logo"></a>' : '<a href="'+ data.wisp.website +'"><img src="'+ data.wisp.logo +'" alt="" class="polkaspots-logo"></a>' );
 
-$('.test').html(data.location.network);
-$('.location_name').html(ps_name);
-$('.location_header').html('<h1>' + ps_header + '</h1>');
-$('.location_info').html('<h2>' + ps_information  + '</h2>');
-$('.location_info_two').html(ps_information_two);
-$('.location_address').html(ps_address);
-$('.location_website').html('<a href="http://'+ ps_website +'">' + ps_website +'</a>');
-if (data.location.image != null) {
-  $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/' + data.location.id + '/medium/'+ data.location.image +'" alt="" class="thumbnail">');
-}
-$('.location_logo').html(( data.location.remove_polkaspots == true ) ? '' : '<a href="http://' + ps_website + '"><img src="https://s3.amazonaws.com/ps-wifi/logos/' + data.location.id +'/medium/'+ data.location.logo +'" alt="" class=" customer-logo"></a>' );
-$('.lazy').html(ps_lazy);
-$('head').append( '<link href="http://mustache.my-wifi.co/css/layout-'+ data.location.design +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<link href="http://mustache.my-wifi.co/css/theme-'+ data.location.theme +'.css" media="screen" rel="stylesheet" type="text/css" />' );
-$('head').append( '<style>body{ font-family:' + data.location.font + '}'+ data.location.css +'</style>' );
+	$('#message').html('<h3>' + data.message + '</h3');
 
-// General Stuff //
+	$('.location_name').html(ps_name);
+	$('.location_header').html('<h1>' + ps_header + '</h1>');
+	$('.location_info').html( ps_information );
+	$('.location_info_two').html(ps_information_two);
+	$('.location_address').html(ps_address);
+	$('.location_website').html('<a href="http://'+ ps_location_website +'">' + ps_location_website +'</a>');
+	if (data.location.image != null) {
+	//  $('.location_image').html('<img src="https://s3.amazonaws.com/ps-wifi/location_images/' + data.location.id + '/medium/'+ data.location.image +'" alt="" class="thumbnail">');
+	//}
+	$('.location_logo').html(( data.location.remove_polkaspots == true ) ? '' : '<a href="http://' + ps_location_website + '"><img src="https://s3.amazonaws.com/ps-wifi/logos/' + data.location.id +'/medium/'+ data.location.logo +'" alt="" class=" customer-logo"></a>' );}
+	$('.lazy').html(ps_lazy);
+	$('head').append( '<link href="http://mustache.my-wifi.co/css/layout-'+ data.location.design +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+	$('head').append( '<link href="http://mustache.my-wifi.co/css/theme-'+ data.location.theme +'.css" media="screen" rel="stylesheet" type="text/css" />' );
+	$('head').append( '<style>body{ font-family:' + data.location.font + '}'+ data.location.css +'</style>' );
 
-$('<div id="footer"><div id="footer-left">' + data.wisp.copyright + '</div><div id="footer-right">' + data.wisp.terms + '</div></div>').insertAfter('#container');
+	// General Stuff //
 
+	$('<div id="footer"><div id="footer-left">' + data.wisp.copyright + '</div><div id="footer-right">' + data.wisp.terms + '</div></div>').insertAfter('#container');
 
-if ( params('notyet') != null ) {
-	$.cookie('uamip', params('uamip'));	
-	$.cookie('uamport', params('uamport'));	
-}
+	if ( params('notyet') != null ) {
+		$.cookie('uamip', params('uamip'));	
+		$.cookie('uamport', params('uamport'));	
+	}
 
-jsonStatus();
-$(1 == 2) ? polkaSMS(loc) : '';
-$(1 == 1) ? polkaLogin(loc) : '';
+	if ( $success_url != null ) {
+  	$.cookie('success_url', $success_url, { expires: 600 })
+	}
+	else {
+		$.cookie('success_url', null)
+	}
+	
+	jsonStatus();
+	polkaSMS(loc);
+	clearCookiesSMS();
 
 },
   error: function() {
-    alert('Uh oh!');
+    //alert('Uh oh!');
   }
 });
 }
 
-
-// SMS Auth //
-function polkaLogin() {
-	var $form = $('#login_form___');
-	$form.live('submit', function() {
-	 $('#login_form').hide();
-	 $('#polkaloader').fadeIn();
-	 $.ajax({
-	 type: 'GET',
-	 url: $form.attr( 'action' ),
-   data: $form.serialize(),
-
-	 success: function(data) {
-		$('#polkaloader').hide();
-		
-		alert("alsdkjfalskjdf");
-		$('#test').hide().html(new_data).fadeIn();
-		
-	},
- 	error: function(data) {
-		alert("111111");
-	}
-	});
-	return false;
-	});
-};
 // SMS Auth //
 function polkaSMS(loc) {
-	var $form = $('#myForm');
-	$form.live('submit', function() {
-	 $('#sms_form').hide();
-	 $('#polkaloader').fadeIn();
+	var $form = $('#smsForm');
+	$form.on('submit', function() {
+	 $('#sms_login_form').hide();
+	 $('#message').hide();
+	 $('#loggingIn').show().html("<img src='http://mustache.my-wifi.co/images/ajax-loader.gif' alt=''><h2>Hold on, we're creating your password.</h2>");
+  
 	 $.ajax({
 	 dataType: 'jsonp',
-	 url: 'https://api.polkaspots.com/api/v1/locations/automatik.json',
+	 url: 'https://api.polkaspots.com/api/v1/locations/sms.json',
    data: $form.serialize() + '&request_uri=' + document.location.hostname + '&location_id=' + loc + '&mac=' + params('mac'),
-
 	 success: function(data) {
-		$('#polkaloader').hide();
+		$('#loggingIn').hide();
 	  var new_data = Mustache.to_html(data.form, 
 	   {
 	      challenge: params('challenge'),
@@ -933,25 +940,67 @@ function polkaSMS(loc) {
 				remove_registration_link: data.location.remove_registration_link
 	      }
 	  );
-		$('#test').hide().html(new_data).fadeIn();
+		if ( data.response_code != 422) {
+			//alert(data.response_code)
+			$.cookie("sms", true)}
+		else {
+			//alert('true');
+			//$.cookie("sms", true);}
+		};
+		
+		$('#message').fadeIn();
+		$('#sms_login_form').hide().html(new_data).fadeIn();
+		$('#message').html('<div class="alert alert-danger"><strong><span class="text-error">' + data.message + '</h3></div></strong>');
+		clearCookiesSMS();
+		polkaSMS(loc);
+	},
+	error: function(responseText, statusText, xhr) {
+	  console.log("Failure");
 	}
 	});
 	return false;
 	});
 };
 
+function clearCookiesSMS() {
+	$("#reset_sms_form").click(function() {
+		$.cookie("sms", false);
+	  location.reload();
+	});
+};
+
 function jsonStatus() {
+ 
  $.ajax({
-  url: 'http://'+$.cookie('uamip')+':'+($.cookie('uamport'))+'/json/status',
+  url: 'http://' + $.cookie("uamip") + ':' + $.cookie("uamport") +'/json/status?',
   type: 'application/x-javascript',
   dataType: 'jsonp',
-   
   success: function(data) {
-	 $('#polkaStatus').html(data.response)
-	 
-},
+	 test = data
+	 if ( test.clientState == 1 ) {
+
+     var lazy_info_template = "<p>You logged in at: {{{startTime}}}</p><p>Session time: {{{sessionTime}}}</p><p>Downloaded: {{{ inputOctets }}}</p><p>{{{ ouputOctets }}}</p><a href='{{{ logoutURL }}}' class='btn btn-danger'>Logout</a>";
+	   date = new Date(data.session.startTime*1000);
+		 formatedDate = date.getHours() + ':' + date.getMinutes() + ' on ' + date.getDate() + '/' + date.getMonth() + '/' + date.getYear();
+		 sessionTime = Math.floor(data.accounting.sessionTime / 60) + ' minutes'
+		 inputOctets = Math.floor(data.accounting.inputOctets / (1024 * 1024)) + ' Mb'
+	   var ps_lazy_info = Mustache.to_html(lazy_info_template, 
+	     {
+	       logoutURL: data.redir.logoutURL,
+	       startTime: formatedDate,
+	       sessionTime: sessionTime,
+	       inputOctets: inputOctets,
+	       ouputOctets: data.accounting.ouputOctets,
+	     }
+	   );	
+		 $('#polkaform').hide();
+	   $('#message').html('You are logged in, nice.').addClass('alert alert-info')
+	   $('#lazy_info').html(ps_lazy_info)
+   };	 
+ },
 
   error: function(data) {
+	 //alert('no');
 }
 
 });
