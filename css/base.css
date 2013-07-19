@@ -59,7 +59,6 @@ body {
 .topbar .settings {
 	float: left;
 	width: 24px;
-	background: url('/assets/settings.png') 0 0px no-repeat;
 	text-indent: -9999cm;
 	margin-top: 0px;
 	height: 24px;
@@ -82,7 +81,8 @@ body.closed-for-business {
 .closed-for-business .location_logo {display:none}
 
 body.magic-loader { 
-  background-color: #cee7de; 
+  /* background-color: #cee7de; */
+  background-color: #b1e0ec;
   margin-top: 140px;
 }
 body.magic-loader .topbar { display: none!important; }
